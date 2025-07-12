@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yakibug's Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background: #f0f0f0;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 20px;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            gap: 15px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+        }
+
+        section {
+            padding: 40px 20px;
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .tabs button {
+            padding: 10px 20px;
+            border: none;
+            background: #444;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .tabs button.active {
+            background: #007BFF;
+        }
+
+        .gallery {
+            display: none;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery.active {
+            display: grid;
+        }
+
+        .item img {
+            width: 100%;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .item p {
+            text-align: center;
+            margin-top: 8px;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            padding-top: 60px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.9);
+        }
+
+        .modal-content {
+            display: block;
+            margin: auto;
+            max-width: 80%;
+        }
+
+        .close {
+            position: absolute;
+            top: 30px;
+            right: 50px;
+            font-size: 40px;
+            color: white;
+            cursor: pointer;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #222;
+            color: #ccc;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Yakibug's workspace</h1>
+        <nav>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="about">
+        <h2>About Me</h2>
+        <p>Hi, I'm yakibug. You can check out my works here.</p>
+    </section>
+
+    <section id="portfolio">
+        <h2>My Work</h2>
+
+        <div class="tabs">
+            <button class="tab-button active" onclick="showGallery('all')">ALL</button>
+            <button class="tab-button" onclick="showGallery('r17')">R17</button>
+            <button class="tab-button" onclick="showGallery('r18')">R18</button>
+        </div>
+
+        <div class="gallery active" id="gallery-all">
+            <div class="item">
+                <img src="119300955_p0.png" alt="Project 1" onclick="openModal(this.src)">
+                <p>shuro</p>
+            </div>
+            <div class="item">
+                <img src="114410840_p0.png" alt="R18 Image" onclick="openModal(this.src)">
+                <p>commission</p>
+            </div>
+            <div class="item">
+                <img src="122252149_p0.png" alt="R18 Image" onclick="openModal(this.src)">
+                <p></p>
+            </div>
+            <div class="item">
+                <img src="114106221_p0.png" alt="R18 Image" onclick="openModal(this.src)">
+                <p></p>
+            </div>
+                        <div class="item">
+                <img src="122252149_p0.png" alt="R18 Image" onclick="openModal(this.src)">
+                <p></p>
+            </div>
+                        <div class="item">
+                <img src="122252149_p0.png" alt="R18 Image" onclick="openModal(this.src)">
+                <p></p>
+            </div>
+                        <div class="item">
+                <img src="122252149_p0.png" alt="R18 Image" onclick="openModal(this.src)">
+                <p></p>
+            </div>
+                        <div class="item">
+                <img src="122252149_p0.png" alt="R18 Image" onclick="openModal(this.src)">
+                <p></p>
+            </div>
+        </div>
+
+        <div class="gallery" id="gallery-r17">
+            <!-- 예시 R17 콘텐츠 -->
+            <div class="item">
+                <img src="110337666_p0.png" alt="R17 Image" onclick="openModal(this.src)">
+                <p></p>
+            </div>
+            <div class="item">
+                <img src="110999361_p0.png" alt="R17 Image" onclick="openModal(this.src)">
+                <p></p>
+            </div>
+        </div>
+
+        <div class="gallery" id="gallery-r18">
+            <div class="item">
+                <img src="128758744_p0.png" alt="R18 Image" onclick="openModal(this.src)">
+                <p>R18</p>
+            </div>
+            <div class="item">
+                <img src="110133037_p1.png" alt="R18 Image" onclick="openModal(this.src)">
+                <p>R18</p>
+            </div>
+        </div>
+
+
+    </section>
+
+    <div id="modal" class="modal" onclick="closeModal()">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modal-img">
+    </div>
+
+    <section id="contact">
+        <h2>Contact Me</h2>
+        <p>Email: dsag3t14@hotmail.com</p>
+        <p>Pixiv: <a href="https://www.pixiv.net/users/13015366" target="_blank">https://www.pixiv.net/users/13015366</a></p>
+        <p>Twitter: <a href="https://x.com/yakibug" target="_blank">https://x.com/yakibug</a></p>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Yakibug. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function openModal(src) {
+            document.getElementById("modal").style.display = "block";
+            document.getElementById("modal-img").src = src;
+        }
+
+        function closeModal() {
+            document.getElementById("modal").style.display = "none";
+        }
+
+        function showGallery(type) {
+            const allGalleries = document.querySelectorAll(".gallery");
+            const buttons = document.querySelectorAll(".tab-button");
+
+            allGalleries.forEach(gallery => gallery.classList.remove("active"));
+            buttons.forEach(btn => btn.classList.remove("active"));
+
+            document.getElementById("gallery-" + type).classList.add("active");
+            event.target.classList.add("active");
+        }
+    </script>
+</body>
+</html>
